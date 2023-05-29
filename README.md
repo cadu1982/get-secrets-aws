@@ -15,7 +15,7 @@ This action is responsible for getting secret names and values to send them to t
       (...)
 
       - name: Split the owner and name of a repository
-        uses: Add-Jazztech/github-split-repo-owner-name-action@v1.0.0
+        uses: github-split-repo-owner-name-action@v1.0.0
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -26,7 +26,7 @@ This action is responsible for getting secret names and values to send them to t
           mask-aws-account-id: true
 
       - name: Get Secrets From AWS Secrets Manager
-        uses: Add-Jazztech/github-get-secrets-aws-action@v1.0.0
+        uses: github-get-secrets-aws-action@v1.0.0
         with:
           app-reference: ${{ env.GITHUB_REPO_NAME }}
           environment-reference: ${{ env.SERVER }}
