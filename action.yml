@@ -1,0 +1,22 @@
+name: Get Secrets From AWS Secrets Manager by AWS CLI
+
+description: Action Responsible for Getting Secrets from AWS Secrets Manager and Mask Them
+
+inputs:
+  app-reference:
+    required: true
+    description: Repository name
+  environment-reference:
+    required: true
+    description: Environment reference in which the application will be deployed
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get Secrets From AWS Secrets Manager
+      env:
+        SECRET_IDENTIFIER: "${{ inputs.app-reference }}-${{ inputs.environment-reference }}"
+      run: |
+        chmod +x ${{ github.action_path }}/scripts/get_secrets_aws.sh
+        ${{ github.action_path }}/scripts/get_secrets_aws.sh
+      shell: bash
